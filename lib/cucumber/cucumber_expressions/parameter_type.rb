@@ -35,7 +35,8 @@ module Cucumber
       end
 
       def transform(self_obj, group_values)
-        self_obj.instance_exec(*group_values, &@transformer)
+        group_values[0] = nil unless group_values.length > 0
+        self_obj.instance_exec(*group_values, &@transformer)    
       end
 
       def <=>(other)
